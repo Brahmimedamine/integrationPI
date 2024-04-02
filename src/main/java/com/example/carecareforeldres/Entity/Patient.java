@@ -22,6 +22,9 @@ public class Patient implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idpatient;
     private Integer user;
+    String nom;
+    String prenom;
+    String mail;
     @Enumerated(EnumType.STRING)
     private TypePatient typatient;
     private Boolean archiver;
@@ -39,6 +42,15 @@ public class Patient implements Serializable {
     @JsonIgnore
     List<Maladie> maladies=new ArrayList<>();
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    Ambulance ambulance;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Etablissement etablissement;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Infermier infermier;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Morgue morgue;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Medecin medecin;
 
 }

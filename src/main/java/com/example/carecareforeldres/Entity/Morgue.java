@@ -1,28 +1,27 @@
 package com.example.carecareforeldres.Entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
+import java.util.List;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Ambilancier implements Serializable {
+@Entity
+@Builder
+public class Morgue implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAmbilancier;
-    private Boolean disponible;
-    private Integer user;
-   private String nom;
-     private  String prenom;
-    private String mail;
+    Long idMorgue;
+    Integer nbCadavre;
+
     @OneToOne(cascade = CascadeType.ALL)
-    Ambulance ambulance;
+    Etablissement etablissement;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "morgue")
+    List<Patient> patients;
 }

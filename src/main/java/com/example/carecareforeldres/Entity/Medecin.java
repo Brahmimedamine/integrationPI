@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -19,6 +21,15 @@ public class Medecin implements Serializable {
     private Integer idMedecin;
     private Boolean disponible;
     private Integer user;
+    String nom;
+    String prenom;
+    String mail;
     @Enumerated(EnumType.STRING)
     private Specialite specialite;
+   // @OneToMany(cascade = CascadeType.ALL,mappedBy = "medecin",fetch = FetchType.EAGER)
+    //List<Rdv> rdvs=new ArrayList<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    Etablissement etablissement;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "medecin")
+    List<Patient>patients;
 }

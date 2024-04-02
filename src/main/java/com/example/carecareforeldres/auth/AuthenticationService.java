@@ -96,9 +96,10 @@ public class AuthenticationService {
                     String sql = "INSERT INTO medecin (user,disponible,specialite) VALUES (?, ?, ?)";
                     jdbcTemplate.update(sql, savedUser.getId(), savedUser.getDisponiblee(), savedUser.getSpecialitee().toString());
                 }
+
                 if (r.getName()==TypeRole.AMBILANCIER){
-                    String sql = "INSERT INTO ambilancier (user) VALUES (?)";
-                    jdbcTemplate.update(sql, savedUser.getId());
+                    String sql = "INSERT INTO ambilancier (user,disponible,nom,prenom,mail) VALUES (?, ?, ?, ?, ?)";
+                    jdbcTemplate.update(sql, savedUser.getId(),savedUser.getDdisponible(),savedUser.getFirstname(),savedUser.getLastname(),savedUser.getEmail());
                 }
                 if (r.getName()==TypeRole.INFERMIER){
                     String sql = "INSERT INTO infermier (user) VALUES (?)";

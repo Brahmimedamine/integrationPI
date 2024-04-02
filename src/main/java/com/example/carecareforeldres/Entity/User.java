@@ -61,6 +61,13 @@ public class User implements UserDetails {
     private String llastname;
     private String emaill;
     private String ntelephone;
+    ///////////////////////////////////////////////
+    private Boolean ddisponible;
+    private Integer user;
+    private String nome;
+    private  String prenome;
+    private String mail;
+    ////////////////////////////////////////////
      private String passwd;
      private boolean mfaEnabled;
     private String secret;
